@@ -1,0 +1,464 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #eef1f5;
+    color: #252525;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background: #e63946;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    margin-bottom: 0;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+
+/* =========================
+   CONTEÚDO PRINCIPAL
+========================= */
+
+main {
+    width: 92%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+
+/* =========================
+   PESQUISA
+========================= */
+
+.form-pesquisa {
+    display: flex;
+    gap: 10px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.form-pesquisa input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form-pesquisa input:focus {
+    border-color: #e63946;
+}
+
+.form-pesquisa button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #e63946;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-pesquisa button:hover {
+    background: #c92f3b;
+}
+
+
+/* =========================
+   CATÁLOGO
+========================= */
+
+.catalogo {
+    margin-top: 10px;
+}
+
+.catalogo-topo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.catalogo-topo h2 {
+    margin: 0;
+    font-size: 28px;
+}
+
+
+/* =========================
+   BOTÃO X
+========================= */
+
+.form-limpar {
+    margin: 0;
+}
+
+.botao-limpar-x {
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #888;
+
+    font-size: 24px;
+    line-height: 34px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-limpar-x:hover {
+    background: #e63946;
+    color: white;
+}
+
+
+/* =========================
+   GRID DOS CARDS
+========================= */
+
+.lista-pokemons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+/* =========================
+   MINI CARDS
+========================= */
+
+.mini-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mini-card {
+    background: white;
+
+    border-radius: 18px;
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.mini-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mini-card img {
+    width: 150px;
+    height: 150px;
+    max-width: 100%;
+
+    object-fit: contain;
+}
+
+.mini-card h3 {
+    margin: 8px 0 12px;
+    font-size: 21px;
+}
+
+.numero {
+    display: block;
+    color: #888;
+    font-weight: bold;
+}
+
+
+/* =========================
+   CARD DETALHADO
+========================= */
+
+.pokemon-card {
+    max-width: 700px;
+    margin: auto;
+
+    background: white;
+
+    border-radius: 20px;
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.pokemon-card img {
+    width: 250px;
+    max-width: 100%;
+}
+
+.pokemon-card h2 {
+    margin: 5px 0 15px;
+    font-size: 36px;
+}
+
+
+/* =========================
+   TIPOS
+========================= */
+
+.tipo {
+    display: inline-block;
+
+    background: #e63946;
+    color: white;
+
+    padding: 7px 15px;
+    margin: 3px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tipo.normal {
+    background: #a8a878;
+}
+
+.tipo.fire {
+    background: #f08030;
+}
+
+.tipo.water {
+    background: #6890f0;
+}
+
+.tipo.electric {
+    background: #f8d030;
+    color: #333;
+}
+
+.tipo.grass {
+    background: #78c850;
+}
+
+.tipo.ice {
+    background: #98d8d8;
+    color: #333;
+}
+
+.tipo.fighting {
+    background: #c03028;
+}
+
+.tipo.poison {
+    background: #a040a0;
+}
+
+.tipo.ground {
+    background: #e0c068;
+    color: #333;
+}
+
+.tipo.flying {
+    background: #a890f0;
+}
+
+.tipo.psychic {
+    background: #f85888;
+}
+
+.tipo.bug {
+    background: #a8b820;
+}
+
+.tipo.rock {
+    background: #b8a038;
+}
+
+.tipo.ghost {
+    background: #705898;
+}
+
+.tipo.dragon {
+    background: #7038f8;
+}
+
+.tipo.dark {
+    background: #705848;
+}
+
+.tipo.steel {
+    background: #b8b8d0;
+    color: #333;
+}
+
+.tipo.fairy {
+    background: #ee99ac;
+}
+
+
+/* =========================
+   ALTURA E PESO
+========================= */
+
+.informacoes {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 25px 0;
+}
+
+.informacoes div {
+    display: flex;
+    flex-direction: column;
+}
+
+.informacoes strong {
+    font-size: 20px;
+}
+
+.informacoes span {
+    color: #777;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   ATRIBUTOS
+========================= */
+
+.atributos {
+    text-align: left;
+
+    background: #f6f7f9;
+
+    padding: 20px;
+
+    border-radius: 15px;
+}
+
+.atributos h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+
+/* =========================
+   HABILIDADES
+========================= */
+
+.habilidades {
+    margin-top: 25px;
+}
+
+.habilidades span {
+    display: inline-block;
+
+    background: #eeeeee;
+
+    padding: 8px 15px;
+    margin: 4px;
+
+    border-radius: 20px;
+}
+
+
+/* =========================
+   ERRO
+========================= */
+
+.erro {
+    max-width: 700px;
+    margin: auto;
+
+    text-align: center;
+
+    background: #ffe5e5;
+    color: #d90429;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    .lista-pokemons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .form-pesquisa {
+        flex-direction: column;
+    }
+
+    .form-pesquisa button {
+        width: 100%;
+    }
+
+    .informacoes {
+        gap: 30px;
+    }
+
+    .catalogo-topo h2 {
+        font-size: 23px;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .lista-pokemons {
+        grid-template-columns: 1fr;
+    }
+}

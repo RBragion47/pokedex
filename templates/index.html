@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pokédex</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="{{ url_for('inicio') }}" class="logo">
+            <h1>POKÉDEX</h1>
+        </a>
+
+        <p>Explore e descubra seus Pokémon favoritos!</p>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             PESQUISA
+        ========================== -->
+
+        <form
+            method="POST"
+            action="{{ url_for('inicio') }}"
+            autocomplete="off"
+            class="form-pesquisa"
+        >
+
+            <input
+                type="text"
+                name="pokemon"
+                placeholder="Digite o nome ou número do Pokémon"
+                required
+            >
+
+            <button type="submit">
+                Pesquisar
+            </button>
+
+        </form>
+
+
+        <!-- =========================
+             HOME
+        ========================== -->
+
+        {% if not pokemon and not erro %}
+
+            <section class="catalogo">
+
+                <div class="catalogo-topo">
+
+                    {% if historico %}
+
+                        <h2>Seus Pokémon recentes</h2>
+
+                        <form
+                            method="POST"
+                            action="{{ url_for('apagar_historico') }}"
+                            class="form-limpar"
+                        >
+
+                            <button
+                                type="submit"
+                                class="botao-limpar-x"
+                                title="Limpar histórico"
+                            >
+                                ×
+                            </button>
+
+                        </form>
+
+                    {% else %}
+
+                        <h2>Explore alguns Pokémon</h2>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="lista-pokemons">
+
+                    {% for p in lista_pokemons %}
+
+                        <a
+                            href="{{ url_for('detalhes_pokemon', nome=p.nome) }}"
+                            class="mini-card-link"
+                        >
+
+                            <div class="mini-card">
+
+                                <span class="numero">
+                                    #{{ "%03d"|format(p.id) }}
+                                </span>
+
+                                <img
+                                    src="{{ p.imagem }}"
+                                    alt="{{ p.nome }}"
+                                >
+
+                                <h3>
+                                    {{ p.nome|capitalize }}
+                                </h3>
+
+                                <div class="tipos">
+
+                                    {% for tipo in p.tipos %}
+
+                                        <span class="tipo {{ tipo }}">
+                                            {{ tipo|capitalize }}
+                                        </span>
+
+                                    {% endfor %}
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+        {% endif %}
+
+
+        <!-- =========================
+             POKÉMON SELECIONADO
+        ========================== -->
+
+        {% if pokemon %}
+
+            <div class="pokemon-card">
+
+                <span class="numero">
+                    #{{ "%03d"|format(pokemon.id) }}
+                </span>
+
+                <img
+                    src="{{ pokemon.imagem }}"
+                    alt="{{ pokemon.nome }}"
+                >
+
+                <h2>
+                    {{ pokemon.nome|capitalize }}
+                </h2>
+
+
+                <div class="tipos">
+
+                    {% for tipo in pokemon.tipos %}
+
+                        <span class="tipo {{ tipo }}">
+                            {{ tipo|capitalize }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="informacoes">
+
+                    <div>
+
+                        <strong>
+                            {{ pokemon.altura }} m
+                        </strong>
+
+                        <span>
+                            Altura
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            {{ pokemon.peso }} kg
+                        </strong>
+
+                        <span>
+                            Peso
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="atributos">
+
+                    <h3>Atributos</h3>
+
+                    <p>
+                        ❤️ HP:
+                        {{ pokemon.hp }}
+                    </p>
+
+                    <p>
+                        ⚔️ Ataque:
+                        {{ pokemon.ataque }}
+                    </p>
+
+                    <p>
+                        🛡️ Defesa:
+                        {{ pokemon.defesa }}
+                    </p>
+
+                    <p>
+                        ✨ Ataque Especial:
+                        {{ pokemon.ataque_especial }}
+                    </p>
+
+                    <p>
+                        🔰 Defesa Especial:
+                        {{ pokemon.defesa_especial }}
+                    </p>
+
+                    <p>
+                        ⚡ Velocidade:
+                        {{ pokemon.velocidade }}
+                    </p>
+
+                </div>
+
+
+                <div class="habilidades">
+
+                    <h3>Habilidades</h3>
+
+                    {% for habilidade in pokemon.habilidades %}
+
+                        <span>
+                            {{ habilidade|replace("-", " ")|title }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- =========================
+             ERRO
+        ========================== -->
+
+        {% if erro %}
+
+            <p class="erro">
+                {{ erro }}
+            </p>
+
+        {% endif %}
+
+    </main>
+
+</body>
+
+</html>
